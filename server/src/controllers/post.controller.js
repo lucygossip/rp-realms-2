@@ -5,8 +5,8 @@ const createPost = async (req, res) => {
     const post = await Post.create({
       title: req.body.title,
       content: req.body.content,
-      author: req.user._id,
       tags: req.body.tags || [],
+      author: req.user._id, // IMPORTANT (JWT middleware)
     });
 
     res.status(201).json(post);
@@ -17,9 +17,38 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find()
-      .populate("author", "username")
-      .sort({ createdAt: -1 });
+    const posts = await Post.aggregate([
+      // join comments collection
+      {
+        $lookup: {
+          from: "comments", // MUST match MongoDB collection name
+          localField: "_id",
+          foreignField: "post",
+          as: "comments",
+        },
+      },
+
+      // add computed field
+      {
+        $addFields: {
+          replyCount: { $size: "$comments" },
+        },
+      },
+
+      // remove heavy comment data (important for performance)
+      {
+        $project: {
+          comments: 0,
+        },
+      },
+
+      // sort newest first
+      {
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    ]);
 
     res.json(posts);
   } catch (err) {
