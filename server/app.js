@@ -1,27 +1,39 @@
-require("dotenv").config();
-
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 
-const mongoose = require("mongoose");
-
-const cors = require("cors");
 app.use(cors());
-
-// ROUTES HERE //
-
 app.use(express.json());
 
-// Define the port number for the server
-const PORT = process.env.PORT || 4000;
+// Routes
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    // Listen for requests only after connecting to DB:
-    app.listen(process.env.PORT, () => {
-      console.log(`Connected to DB & listening on port ${process.env.PORT}!`);
-    });
-  })
-  // If there's an error connecting, we will see that in the terminal:
-  .catch((error) => console.log(error));
+const authRoutes = require("./src/routes/auth.routes");
+const postRoutes = require("./src/routes/post.routes");
+const commentRoutes = require("./src/routes/comment.routes");
+
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
+
+// Health Check
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+// 404 Handler
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+
+// Global Error Handler
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Server error" });
+});
+
+module.exports = app;
