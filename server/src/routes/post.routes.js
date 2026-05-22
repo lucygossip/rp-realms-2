@@ -9,6 +9,7 @@ const {
   getPostById,
   updatePost,
   deletePost,
+  getPostsByCategory,
 } = require("../controllers/post.controller");
 
 // CREATE
@@ -19,6 +20,9 @@ router.get("/", getPosts);
 
 // READ single post
 router.get("/:id", getPostById);
+
+// Get post by category
+router.get("/category/:category", getPostsByCategory);
 
 // UPDATE
 router.put("/:id", protect, updatePost);

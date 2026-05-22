@@ -5,6 +5,7 @@ const createPost = async (req, res) => {
     const post = await Post.create({
       title: req.body.title,
       content: req.body.content,
+      category: req.body.category,
       tags: req.body.tags || [],
       author: req.user._id, // IMPORTANT (JWT middleware)
     });
@@ -115,10 +116,23 @@ const deletePost = async (req, res) => {
   }
 };
 
+const getPostsByCategory = async (req, res) => {
+  try {
+    const posts = await Post.find({
+      category: req.params.category,
+    }).populate("author", "username");
+
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   createPost,
   getPosts,
   getPostById,
   updatePost,
   deletePost,
+  getPostsByCategory,
 };
