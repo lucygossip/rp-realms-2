@@ -18,11 +18,11 @@ router.post("/", protect, createPost);
 // READ (feed)
 router.get("/", getPosts);
 
-// READ single post
-router.get("/:id", getPostById);
-
 // Get post by category
 router.get("/category/:category", getPostsByCategory);
+
+// READ single post
+router.get("/:id", getPostById);
 
 // UPDATE
 router.put("/:id", protect, updatePost);

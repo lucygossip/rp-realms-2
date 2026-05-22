@@ -11,6 +11,7 @@ const createPost = async (req, res) => {
     });
 
     res.status(201).json(post);
+    console.log("CREATE POST HIT:", req.body);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

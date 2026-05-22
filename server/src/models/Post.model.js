@@ -18,10 +18,10 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: [
-        "General",
-        "Tech Help",
-        "Announcements",
-        "Off-topic",
+        "general",
+        "tech-help",
+        "announcements",
+        "off-topic",
       ],
     },
 
