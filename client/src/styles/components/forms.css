@@ -4,20 +4,46 @@
   gap: var(--space-1);
 }
 
-.input {
+.form-group textarea {
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+/* Inputs */
+.input,
+.textarea,
+select {
   padding: 0.75rem 0.9rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
   transition: 0.2s ease;
+  font-size: 0.95rem;
+  outline: none;
 }
 
-.input:focus {
+/* Focus state */
+.input:focus,
+.textarea:focus,
+select:focus {
   border-color: var(--primary-light);
   box-shadow: 0 0 0 3px rgba(166, 122, 90, 0.25);
 }
 
+/* Textarea variant */
+.textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Optional: larger “title input” variant (CreatePost uses this) */
+.input-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Error states */
 .error-text {
   font-size: 0.85rem;
   color: var(--danger);
@@ -27,7 +53,7 @@
   background: var(--danger-soft);
   color: white;
   padding: 0.75rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
   text-align: center;
 }

@@ -15,10 +15,12 @@
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/feed.css";
+@import "./components/forms.css";
 
 @import "./features/forums.css";
 @import "./features/login-page.css";
 @import "./features/profile.css";
+@import "./features/create-post.css";
 
 @import "./utilities/spacing.css";
 

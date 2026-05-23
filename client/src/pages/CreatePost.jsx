@@ -51,8 +51,9 @@ const validationSchema = Yup.object({
 };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-      <h2>Create New Thread</h2>
+  <div className="create-post-page">
+    <div className="create-post-card">
+      <h2 className="create-post-title">Create New Thread</h2>
 
       <Formik
         initialValues={initialValues}
@@ -60,58 +61,67 @@ const validationSchema = Yup.object({
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, errors }) => (
-          <Form>
+          <Form className="create-post-form">
 
             {errors.general && (
-              <div style={{ color: "red" }}>
+              <div className="error-banner">
                 {errors.general}
               </div>
             )}
 
-            <div>
+            <div className="form-group">
               <Field
                 name="title"
                 placeholder="Thread title"
+                className="input input-title"
               />
-              <ErrorMessage name="title" component="div" />
+              <ErrorMessage name="title" component="div" className="error-text" />
             </div>
 
-            <div>
-              <Field as="select" name="category">
-  <option value="">Select category</option>
-  <option value="general">General</option>
-  <option value="tech-help">Tech Help</option>
-  <option value="announcements">Announcements</option>
-  <option value="off-topic">Off-topic</option>
-</Field>
+            <div className="form-group">
+              <Field as="select" name="category" className="input">
+                <option value="">Select category</option>
+                <option value="general">General</option>
+                <option value="tech-help">Tech Help</option>
+                <option value="announcements">Announcements</option>
+                <option value="off-topic">Off-topic</option>
+              </Field>
+              <ErrorMessage name="category" component="div" className="error-text" />
             </div>
 
-            <div>
+            <div className="form-group">
               <Field
                 as="textarea"
                 name="content"
                 placeholder="Write your post..."
-                rows="8"
+                rows="10"
+                className="textarea"
               />
-              <ErrorMessage name="content" component="div" />
+              <ErrorMessage name="content" component="div" className="error-text" />
             </div>
 
-            <div>
+            <div className="form-group">
               <Field
                 name="tags"
                 placeholder="tags (comma separated)"
+                className="input"
               />
             </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              Create Thread
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary"
+            >
+              {isSubmitting ? "Publishing..." : "Create Thread"}
             </button>
 
           </Form>
         )}
       </Formik>
     </div>
-  );
+  </div>
+);
 };
 
 export default CreatePost;
