@@ -1,6 +1,7 @@
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("../config/cloudinary");
 
 const registerUser = async (req, res) => {
   try {
@@ -63,9 +64,39 @@ const loginUser = async (req, res) => {
 };
 
 const getMe = async (req, res) => {
+  const user = await User.findById(req.user._id)
+    .select("-password");
+
+  res.json(user);
+};
+
+const updateAvatar = async (req, res) => {
   try {
-    res.json(req.user);
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: "avatars" },
+        (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        }
+      );
+
+      stream.end(req.file.buffer);
+    });
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      { avatar: result.secure_url },
+      { new: true }
+    );
+
+    res.json(updatedUser);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: err.message });
   }
 };
@@ -74,4 +105,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  updateAvatar,
 };

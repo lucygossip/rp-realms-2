@@ -49,6 +49,27 @@
   flex-shrink: 0;
 }
 
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+}
+
+.upload-btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.upload-btn:hover {
+  opacity: 0.9;
+}
+
+
 .profile-name {
   font-size: 2rem;
   margin: 0;
@@ -97,3 +118,11 @@
   opacity: 0.9;
   background: var(--bg);
 }
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
