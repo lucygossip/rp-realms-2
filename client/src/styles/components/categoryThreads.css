@@ -1,0 +1,186 @@
+/* =========================
+   Page Layout
+========================= */
+
+.threads-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.threads-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* =========================
+   Loading
+========================= */
+
+.threads-loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Header
+========================= */
+
+.threads-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.threads-title {
+  margin: 0;
+  font-size: 1.9rem;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.threads-subtitle {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   New Thread Button
+========================= */
+
+.new-thread-btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+  box-shadow: 0 3px 10px var(--shadow);
+}
+
+.new-thread-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Table Wrapper
+========================= */
+
+.threads-table {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 3px 10px var(--shadow);
+}
+
+/* =========================
+   Table Head
+========================= */
+
+.threads-table-head {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  padding: 12px 14px;
+  background: var(--bg-alt);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Table Body
+========================= */
+
+.threads-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   Empty State
+========================= */
+
+.empty-state {
+  padding: 20px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Thread Row
+========================= */
+
+.thread-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  padding: 14px;
+  border-top: 1px solid var(--border);
+  align-items: center;
+  transition: 0.2s;
+}
+
+.thread-row:hover {
+  background: var(--bg-alt);
+}
+
+/* =========================
+   Thread Content
+========================= */
+
+.thread-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.thread-title-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+
+.thread-title-link:hover {
+  color: var(--primary);
+}
+
+.thread-preview {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Meta Columns
+========================= */
+
+.thread-author,
+.thread-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Responsive (important for tables)
+========================= */
+
+@media (max-width: 700px) {
+  .threads-table-head {
+    display: none;
+  }
+
+  .thread-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .thread-author,
+  .thread-date {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,68 @@
+.forum-navbar {
+  background: linear-gradient(
+    180deg,
+    var(--primary-dark),
+    var(--primary)
+  );
+  border-bottom: 1px solid var(--border-dark);
+  box-shadow: 0 4px 12px var(--shadow-deep);
+  padding: 0.75rem 0;
+}
+
+.forum-navbar .navbar-brand {
+  color: var(--warning) !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px var(--shadow-deep);
+}
+
+.forum-navbar .navbar-brand:hover {
+  color: var(--warning-soft) !important;
+}
+
+.forum-navbar .nav-link {
+  color: var(--bg) !important;
+  font-weight: 500;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  padding: 0.4rem 0.75rem;
+}
+
+.forum-navbar .nav-link:hover {
+  background: rgba(255, 250, 240, 0.1);
+  color: var(--warning-soft) !important;
+}
+
+.forum-navbar .nav-link.active {
+  background: var(--primary-light);
+  color: var(--warning) !important;
+}
+
+.forum-navbar .btn-outline-light {
+  border-color: var(--border);
+  color: var(--bg);
+  transition: all 0.2s ease;
+}
+
+.forum-navbar .btn-outline-light:hover {
+  background: var(--danger);
+  border-color: var(--danger-dark);
+  color: var(--bg);
+}
+
+.forum-navbar .navbar-toggler {
+  border-color: var(--border);
+}
+
+.forum-navbar .navbar-toggler-icon {
+  filter: invert(90%);
+}
+
+.forum-navbar .navbar-collapse {
+  gap: 0.5rem;
+}
+
+.forum-navbar .nav {
+  gap: 0.25rem;
+}

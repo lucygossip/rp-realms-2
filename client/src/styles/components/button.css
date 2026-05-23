@@ -1,0 +1,63 @@
+/* DELETE BUTTON */
+
+.delete-btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+/* MAIN DANGER BUTTON (Thread delete etc.) */
+.delete-btn.danger {
+  background: linear-gradient(
+    135deg,
+    var(--danger),
+    var(--danger-dark)
+  );
+  color: #fffaf0;
+  border-color: var(--danger-dark);
+}
+
+.delete-btn.danger:hover {
+  background: linear-gradient(
+    135deg,
+    var(--danger-dark),
+    #3f0f0f
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px var(--shadow-deep);
+}
+
+/* CLICK FEEDBACK */
+.delete-btn.danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+/* SMALL VERSION (comments) */
+.delete-btn.small {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+}
+
+/* OPTIONAL: SUBTLE OUTLINE VERSION (less aggressive UI) */
+.delete-btn.outline {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger-soft);
+}
+
+.delete-btn.outline:hover {
+  background: var(--danger-soft);
+  color: var(--surface);
+}
