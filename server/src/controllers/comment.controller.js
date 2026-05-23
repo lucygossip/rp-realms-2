@@ -19,7 +19,7 @@ const getCommentsForPost = async (req, res) => {
     const comments = await Comment.find({
       post: req.params.postId,
     })
-      .populate("author", "username")
+      .populate("author", "username avatar")
       .sort({ createdAt: 1 });
 
     res.json(comments);
@@ -36,7 +36,12 @@ const deleteComment = async (req, res) => {
       return res.status(404).json({ message: "Comment not found" });
     }
 
-    if (comment.author.toString() !== req.user._id.toString()) {
+    const isAuthor =
+      comment.author.toString() === req.user._id.toString();
+
+    const isAdmin = req.user.role === "admin";
+
+    if (!isAuthor && !isAdmin) {
       return res.status(403).json({ message: "Not allowed" });
     }
 
