@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "../styles/components/forums.css";
 
 const categories = [
   {
@@ -26,8 +25,8 @@ const categories = [
 
 const Forums = () => {
   return (
-    <div className="forums-page">
-      <div className="forums-container">
+    <div className="page-layout">
+      <div className="page-container">
         <h1 className="forums-title">Forums</h1>
         <p className="forums-subtitle">
           Choose a category to view threads
@@ -40,7 +39,7 @@ const Forums = () => {
               to={`/forums/${cat.name}`}
               className="forum-link"
             >
-              <div className="forum-card">
+              <div className="card forum-card">
                 <h3 className="forum-label">{cat.label}</h3>
                 <p className="forum-description">
                   {cat.description}

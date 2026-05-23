@@ -1,22 +1,27 @@
 @import "./base/reset.css";
 @import "./base/typography.css";
 
+@import "./layout/auth-layout.css";
 @import "./layout/forum-layout.css";
 
 @import "./themes/colors.css";
+@import "./themes/variables.css";
 
 @import "./base/globals.css";
+@import "./base/typography.css";
 
 @import "./components/button.css";
-@import "./components/post-card.css";
 @import "./components/comment.css";
 @import "./components/navbar.css";
+@import "./components/cards.css";
 @import "./components/feed.css";
-@import "./components/profile.css";
-@import "./components/forums.css";
+
+@import "./features/forums.css";
+@import "./features/login-page.css";
+@import "./features/profile.css";
 
 @import "./utilities/spacing.css";
 
-@import "./themes/variables.css";
+
 
 @import "./overrides/bootstrap-buttons.css";

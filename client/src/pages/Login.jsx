@@ -44,8 +44,9 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+  <div className="auth-layout">
+    <div className="card login-card">
+      <h2 className="login-title">Welcome Back</h2>
 
       <Formik
         initialValues={initialValues}
@@ -53,33 +54,48 @@ const Login = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, errors }) => (
-          <Form>
+          <Form className="login-form">
 
             {errors.general && (
-              <div style={{ color: "red" }}>
+              <div className="error-banner">
                 {errors.general}
               </div>
             )}
 
-            <div>
-              <Field name="email" type="email" placeholder="Email" />
-              <ErrorMessage name="email" component="div" />
+            <div className="form-group">
+              <Field
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="input"
+              />
+              <ErrorMessage name="email" component="div" className="error-text" />
             </div>
 
-            <div>
-              <Field name="password" type="password" placeholder="Password" />
-              <ErrorMessage name="password" component="div" />
+            <div className="form-group">
+              <Field
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="input"
+              />
+              <ErrorMessage name="password" component="div" className="error-text" />
             </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              Login
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary"
+            >
+              {isSubmitting ? "Logging in..." : "Login"}
             </button>
 
           </Form>
         )}
       </Formik>
     </div>
-  );
+  </div>
+);
 };
 
 export default Login;
