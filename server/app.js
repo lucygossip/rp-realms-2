@@ -3,11 +3,24 @@ const cors = require("cors");
 
 const app = express();
 
-//app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://rp-realms-2-client.onrender.com"
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.some(o => o === origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS: " + origin));
+  },
   credentials: true
 }));
+
 app.use(express.json());
 
 // Routes
