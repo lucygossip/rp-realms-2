@@ -3,9 +3,7 @@ import { NavLink } from "react-router-dom";
 const AdminSidebar = () => {
   return (
     <aside className="admin-sidebar">
-      <div className="admin-sidebar-title">
-        Admin Panel
-      </div>
+      <div className="admin-sidebar-title">Admin Panel</div>
 
       <nav className="admin-nav">
         <NavLink to="/admin" end className="admin-link">
@@ -13,8 +11,8 @@ const AdminSidebar = () => {
         </NavLink>
 
         <NavLink to="/admin/users" className="admin-link">
-  Users
-</NavLink>
+          Users
+        </NavLink>
 
         <NavLink to="/admin/posts" className="admin-link">
           Posts
@@ -27,6 +25,8 @@ const AdminSidebar = () => {
         <NavLink to="/admin/settings" className="admin-link">
           Settings
         </NavLink>
+        <NavLink to="/admin/pages/rules" className="admin-link">Edit Rules</NavLink>
+        <NavLink to="/admin/pages/guidelines" className="admin-link">Edit Guidelines</NavLink>
       </nav>
     </aside>
   );

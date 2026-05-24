@@ -4,6 +4,7 @@ import {
   banUser,
   suspendUser,
   activateUser,
+  updateUserRole,
 } from "../services/admin.api";
 
 const AdminUsers = () => {
@@ -84,52 +85,52 @@ const AdminUsers = () => {
                     </span>
                   </td>
 
-                  <td>{user.role}</td>
+                  <td>
+                    <select
+                      value={user.role}
+                      disabled={!!loadingAction}
+                      onChange={(e) =>
+                        handleAction(
+                          user._id,
+                          (id) => updateUserRole(id, e.target.value),
+                          "role",
+                        )
+                      }
+                    >
+                      <option value="user">User</option>
+                      <option value="moderator">Moderator</option>
+                      <option value="admin">Admin</option>
+                    </select>
+
+                    {loadingAction === "role" && <span>...</span>}
+                  </td>
 
                   <td className="actions">
                     {/* ACTIVATE */}
                     <button
-                      disabled={loadingAction}
+                      disabled={!!loadingAction}
                       onClick={() =>
-                        handleAction(
-                          user._id,
-                          activateUser,
-                          "activate"
-                        )
+                        handleAction(user._id, activateUser, "activate")
                       }
                     >
-                      {loadingAction === "activate"
-                        ? "..."
-                        : "Activate"}
+                      {loadingAction === "activate" ? "..." : "Activate"}
                     </button>
 
                     {/* SUSPEND */}
                     <button
-                      disabled={loadingAction}
+                      disabled={!!loadingAction}
                       onClick={() =>
-                        handleAction(
-                          user._id,
-                          suspendUser,
-                          "suspend"
-                        )
+                        handleAction(user._id, suspendUser, "suspend")
                       }
                     >
-                      {loadingAction === "suspend"
-                        ? "..."
-                        : "Suspend"}
+                      {loadingAction === "suspend" ? "..." : "Suspend"}
                     </button>
 
                     {/* BAN */}
                     <button
                       className="danger"
-                      disabled={loadingAction}
-                      onClick={() =>
-                        handleAction(
-                          user._id,
-                          banUser,
-                          "ban"
-                        )
-                      }
+                      disabled={!!loadingAction}
+                      onClick={() => handleAction(user._id, banUser, "ban")}
                     >
                       {loadingAction === "ban" ? "..." : "Ban"}
                     </button>

@@ -26,3 +26,8 @@ export const activateUser = async (userId) => {
   const res = await api.patch(`/admin/users/${userId}/activate`);
   return res.data;
 };
+
+export const updateUserRole = async (userId, role) => {
+  const res = await api.patch(`/admin/users/${userId}/role`, { role });
+  return res.data;
+};

@@ -28,7 +28,9 @@ app.use(express.json());
 const authRoutes = require("./src/routes/auth.routes");
 const postRoutes = require("./src/routes/post.routes");
 const commentRoutes = require("./src/routes/comment.routes");
+const pageRoutes = require("./src/routes/page.routes");
 const adminRoutes = require("./src/routes/admin.routes");
+const adminPageRoutes = require("./src/routes/admin.page.routes");
 
 
 
@@ -36,6 +38,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/pages", pageRoutes);
+app.use("/api/admin/pages", adminPageRoutes);
 
 // Health Check
 

@@ -30,6 +30,14 @@ const AppNavbar = () => {
               Forums
             </Nav.Link>
 
+            <Nav.Link as={NavLink} to="/rules">
+              Rules
+            </Nav.Link>
+
+            <Nav.Link as={NavLink} to="/guidelines">
+              Guidelines
+            </Nav.Link>
+
             {/* Profile (logged in users) */}
             {user && (
               <Nav.Link as={Link} to="/profile">

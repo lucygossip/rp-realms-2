@@ -136,6 +136,47 @@ const setUserActive = async (req, res) => {
   }
 };
 
+const updateUserRole = async (req, res) => {
+  try {
+    const { role } = req.body;
+
+    const allowedRoles = ["user", "moderator", "admin"];
+    if (!allowedRoles.includes(role)) {
+      return res.status(400).json({ message: "Invalid role" });
+    }
+
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // optional safety: prevent demoting last admin
+    if (user.role === "admin" && role !== "admin") {
+      const adminCount = await User.countDocuments({ role: "admin" });
+      if (adminCount <= 1) {
+        return res.status(400).json({
+          message: "Cannot demote the last admin",
+        });
+      }
+    }
+
+    user.role = role;
+    await user.save();
+
+    res.json({
+      message: "Role updated successfully",
+      user: {
+        id: user._id,
+        username: user.username,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getAdminStats,
   getAllUsers,
@@ -144,4 +185,5 @@ module.exports = {
   banUser,
   suspendUser,
   setUserActive,
+  updateUserRole,
 };
