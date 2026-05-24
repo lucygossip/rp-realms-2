@@ -13,8 +13,8 @@ const AdminSidebar = () => {
         </NavLink>
 
         <NavLink to="/admin/users" className="admin-link">
-          Users
-        </NavLink>
+  Users
+</NavLink>
 
         <NavLink to="/admin/posts" className="admin-link">
           Posts
