@@ -1,4 +1,4 @@
-const Page = require("../models/page.model");
+const Page = require("../models/Page.model");
 
 const seedPages = async () => {
   await Page.updateOne(
