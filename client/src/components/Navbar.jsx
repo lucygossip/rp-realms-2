@@ -16,7 +16,6 @@ const AppNavbar = () => {
   return (
     <Navbar expand="lg" className="forum-navbar">
       <Container>
-
         {/* Brand */}
         <Navbar.Brand as={Link} to="/">
           Burdens of the Broken
@@ -25,23 +24,29 @@ const AppNavbar = () => {
         <Navbar.Toggle />
 
         <Navbar.Collapse className="justify-content-end">
-
           <Nav className="align-items-center">
-
             {/* Always visible */}
             <Nav.Link as={NavLink} to="/">
               Forums
             </Nav.Link>
 
-            {/* Only logged-in users */}
+            {/* Profile (logged in users) */}
             {user && (
-  <Nav.Link
-    as={Link}
-    to="/profile"
-  >
-    {user.username}
-  </Nav.Link>
-)}
+              <Nav.Link as={Link} to="/profile">
+                {user.username}
+              </Nav.Link>
+            )}
+
+            {/* Admin link (ONLY ADMIN) */}
+            {user?.role === "admin" && (
+              <Nav.Link
+                as={NavLink}
+                to="/admin"
+                className="admin-nav-link ms-3"
+              >
+                Admin
+              </Nav.Link>
+            )}
 
             {/* Auth buttons */}
             {!user ? (
@@ -64,10 +69,8 @@ const AppNavbar = () => {
                 Logout
               </Button>
             )}
-
           </Nav>
         </Navbar.Collapse>
-
       </Container>
     </Navbar>
   );

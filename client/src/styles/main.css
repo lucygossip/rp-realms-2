@@ -26,3 +26,5 @@
 
 
 @import "./overrides/bootstrap-buttons.css";
+
+@import "../admin/styles/admin.css";

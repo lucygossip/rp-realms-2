@@ -10,6 +10,7 @@ import Post from "./pages/Post";
 import Profile from "./pages/Profile";
 import Forums from "./pages/Forums";
 import CategoryThreads from "./pages/CategoryThreads";
+import AdminDashboard from "./admin/pages/AdminDashboard";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -61,6 +62,14 @@ function App() {
   element={
     <ProtectedRoute>
       <Profile />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/admin"
+  element={
+    <ProtectedRoute>
+      <AdminDashboard />
     </ProtectedRoute>
   }
 />

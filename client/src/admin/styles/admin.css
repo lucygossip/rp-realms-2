@@ -1,0 +1,95 @@
+/* Admin Nav Link */
+.admin-nav-link {
+  font-size: 0.75rem;
+  color: var(--text-muted) !important;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  border: 1px solid var(--border);
+  padding-left: 12px;
+  margin-left: 8px;
+
+  transition: all 0.15s ease;
+}
+
+/* Hover state */
+.admin-nav-link:hover {
+  color: var(--accent) !important;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.admin-page {
+  padding: 24px;
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Page title */
+.admin-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* CARD */
+.stat-card {
+  background: var(--surface);
+  padding: 18px;
+  border-radius: 14px;
+
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px var(--shadow);
+
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow-deep);
+}
+
+/* LABEL */
+.stat-card h3 {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* VALUE */
+.stat-card p {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* OPTIONAL: subtle accent border variant */
+.stat-card.accent {
+  border-left: 4px solid var(--accent);
+}
+
+/* OPTIONAL: danger stat (e.g. banned users) */
+.stat-card.danger p {
+  color: var(--danger);
+}
+
+.stat-card.success p {
+  color: var(--success);
+}
+
+.stat-card.warning p {
+  color: var(--warning-dark);
+}
