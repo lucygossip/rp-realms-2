@@ -4,6 +4,16 @@ const createCharacter = async (req, res) => {
   try {
     const { name, race, class: charClass, age, traits, backstory } = req.body;
 
+    const characterCount = await Character.countDocuments({
+      user: req.user._id,
+    });
+
+    if (characterCount >= 3) {
+      return res.status(400).json({
+        message: "Maximum of 3 characters allowed per user.",
+      });
+    }
+
     const character = await Character.create({
       owner: req.user._id,
       name,
@@ -22,8 +32,9 @@ const createCharacter = async (req, res) => {
 
 const getMyCharacters = async (req, res) => {
   try {
-    const characters = await Character.find({ owner: req.user._id })
-      .sort({ createdAt: -1 });
+    const characters = await Character.find({ owner: req.user._id }).sort({
+      createdAt: -1,
+    });
 
     res.json(characters);
   } catch (err) {
@@ -58,11 +69,9 @@ const updateCharacter = async (req, res) => {
       return res.status(403).json({ message: "Not allowed" });
     }
 
-    const updated = await Character.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updated = await Character.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     res.json(updated);
   } catch (err) {

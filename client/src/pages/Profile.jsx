@@ -15,6 +15,8 @@ const Profile = () => {
   const [creating, setCreating] = useState(false);
   const [editingCharacterId, setEditingCharacterId] = useState(null);
 
+  const isMaxCharacters = characters.length >= 3;
+
   const [form, setForm] = useState({
     name: "",
     race: "",
@@ -142,6 +144,22 @@ const Profile = () => {
     setShowCreateCharacter(true);
   };
 
+  const handleDeleteCharacter = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this character?",
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      await api.delete(`/characters/${id}`);
+
+      setCharacters((prev) => prev.filter((c) => c._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="profile-page">
       <div className="profile-card">
@@ -186,12 +204,23 @@ const Profile = () => {
               <div className="panel-header">
                 <h2>Characters</h2>
 
-                <button
-                  className="create-character-btn"
-                  onClick={openCreateModal}
-                >
-                  + Create Character
-                </button>
+                <div className="panel-actions">
+                  <div className="tooltip-wrapper">
+                    <button
+                      className="create-character-btn"
+                      onClick={openCreateModal}
+                      disabled={isMaxCharacters}
+                    >
+                      + Create Character
+                    </button>
+
+                    {isMaxCharacters && (
+                      <span className="tooltip-text">
+                        Max 3 characters reached
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {characters.length === 0 && (
@@ -215,12 +244,20 @@ const Profile = () => {
                       {c.backstory?.slice(0, 120)}
                       {c.backstory?.length > 120 ? "..." : ""}
                     </p>
-                    <button
-                      onClick={() => openEditModal(c)}
-                      className="edit-btn fantasy"
-                    >
-                      Edit
-                    </button>
+                    <div className="character-actions">
+                      <button
+                        onClick={() => openEditModal(c)}
+                        className="edit-btn"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteCharacter(c._id)}
+                        className="delete-btn danger"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
