@@ -5,7 +5,7 @@ import AdminDashboard from "../admin/pages/AdminDashboard";
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="/admin" element={<AdminLayout />}>
+      <Route element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
       </Route>
     </Routes>

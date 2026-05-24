@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const protect = require("../middleware/protect");
+const protect = require("../middleware/auth.middleware");
 const adminOnly = require("../middleware/admin.middleware");
 
 const {
@@ -26,3 +26,5 @@ router.delete("/posts/:id", deletePostAdmin);
 router.patch("/users/:id/ban", banUser);
 router.patch("/users/:id/suspend", suspendUser);
 router.patch("/users/:id/activate", setUserActive);
+
+module.exports = router;

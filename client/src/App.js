@@ -13,6 +13,7 @@ import CategoryThreads from "./pages/CategoryThreads";
 import AdminDashboard from "./admin/pages/AdminDashboard";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminRoutes from "./routes/AdminRoutes";
 
 function App() {
   return (
@@ -65,11 +66,12 @@ function App() {
     </ProtectedRoute>
   }
 />
+
 <Route
-  path="/admin"
+  path="/admin/*"
   element={
     <ProtectedRoute>
-      <AdminDashboard />
+      <AdminRoutes />
     </ProtectedRoute>
   }
 />

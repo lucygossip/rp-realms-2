@@ -4,11 +4,11 @@ import AdminHeader from "../components/AdminHeader";
 
 const AdminLayout = () => {
   return (
-    <div className="admin-container">
+    <div className="admin-layout">
       <AdminSidebar />
-      
+
       <div className="admin-main">
-        <AdminHeader />
+       <AdminHeader />
         <Outlet />
       </div>
     </div>
