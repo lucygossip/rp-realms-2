@@ -69,16 +69,13 @@
   opacity: 0.9;
 }
 
-
 .profile-name {
   font-size: 2rem;
   margin: 0;
   color: #222;
 }
 
-/* =========================
-   Fields Layout
-========================= */
+/* Fields Layout */
 
 .profile-fields {
   display: flex;
@@ -126,3 +123,131 @@
   gap: 1rem;
 }
 
+/* New Sidebar Layout */
+
+.profile-card {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Sidebar */
+
+.profile-sidebar {
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  padding-right:24px;
+  border-right:1px solid var(--border);
+  flex-shrink:0;
+}
+
+.profile-sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-sidebar button {
+  width:100%;
+  border:none;
+  background:none;
+  padding:12px;
+  text-align:left;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+.profile-sidebar button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.profile-sidebar button.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* Content Area */
+
+.profile-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Character Panel */
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.create-character-btn {
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.character-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.character-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+}
+
+.sidebar-avatar-wrapper {
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.sidebar-avatar {
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--accent);
+  transition:0.2s ease;
+}
+
+.sidebar-avatar-wrapper:hover .sidebar-avatar {
+  opacity:0.85;
+  transform:scale(1.03);
+}
+
+.uploading-text {
+  font-size:0.85rem;
+  color:#666;
+}

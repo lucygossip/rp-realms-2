@@ -15,6 +15,7 @@
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/forms.css";
+@import "./components/modal.css";
 
 @import "./features/forums.css";
 @import "./features/login-page.css";

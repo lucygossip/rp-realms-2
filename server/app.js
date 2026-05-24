@@ -31,6 +31,7 @@ const commentRoutes = require("./src/routes/comment.routes");
 const pageRoutes = require("./src/routes/page.routes");
 const adminRoutes = require("./src/routes/admin.routes");
 const adminPageRoutes = require("./src/routes/admin.page.routes");
+const characterRoutes = require("./src/routes/character.routes");
 
 
 
@@ -40,6 +41,7 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/pages", pageRoutes);
 app.use("/api/admin/pages", adminPageRoutes);
+app.use("/api/characters", characterRoutes);
 
 // Health Check
 
