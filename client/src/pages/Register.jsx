@@ -25,7 +25,6 @@ const Register = () => {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       await register(values);
-
       navigate("/login");
     } catch (err) {
       setErrors({
@@ -37,43 +36,77 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="auth-layout">
+      <div className="card login-card">
+        <h2 className="login-title">Create Account</h2>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting, errors }) => (
-          <Form>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, errors }) => (
+            <Form className="login-form">
 
-            {errors.general && (
-              <div style={{ color: "red" }}>{errors.general}</div>
-            )}
+              {errors.general && (
+                <div className="error-banner">
+                  {errors.general}
+                </div>
+              )}
 
-            <div>
-              <Field name="username" placeholder="Username" />
-              <ErrorMessage name="username" component="div" />
-            </div>
+              <div className="form-group">
+                <Field
+                  name="username"
+                  placeholder="Username"
+                  className="input"
+                />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="error-text"
+                />
+              </div>
 
-            <div>
-              <Field name="email" type="email" placeholder="Email" />
-              <ErrorMessage name="email" component="div" />
-            </div>
+              <div className="form-group">
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="input"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="error-text"
+                />
+              </div>
 
-            <div>
-              <Field name="password" type="password" placeholder="Password" />
-              <ErrorMessage name="password" component="div" />
-            </div>
+              <div className="form-group">
+                <Field
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  className="input"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error-text"
+                />
+              </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              Register
-            </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary"
+              >
+                {isSubmitting ? "Creating account..." : "Register"}
+              </button>
 
-          </Form>
-        )}
-      </Formik>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };

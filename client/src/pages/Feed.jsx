@@ -15,56 +15,66 @@ const Feed = () => {
   }, []);
 
   return (
-    <div className="feed-container">
+  <div className="threads-page">
+    <div className="threads-container">
 
-      <div className="feed-header">
-        <h2 className="feed-title">Forum Threads</h2>
+      <div className="threads-header">
+        <div>
+          <h2 className="threads-title">Forum Threads</h2>
+          <p className="threads-subtitle">
+            Browse all discussions
+          </p>
+        </div>
+
+        <Link to="/create-post" className="new-thread-btn">
+          + New Thread
+        </Link>
       </div>
 
-      <div className="thread-list">
+      <div className="threads-table">
 
-        {posts.map((post) => (
-          <div key={post._id} className="thread-row">
+        <div className="threads-table-head">
+          <div>Thread</div>
+          <div>Author</div>
+          <div>Date</div>
+        </div>
 
-            {/* LEFT: Main content */}
-            <div className="thread-main">
+        <div className="threads-table-body">
 
-              <Link
-                to={`/post/${post._id}`}
-                className="thread-title"
-              >
-                {post.title}
-              </Link>
+          {posts.map((post) => (
+            <div key={post._id} className="thread-row">
 
-              <div className="thread-meta">
-                Posted by{" "}
-                <span className="thread-author">
-                  {post.author?.username || "Unknown"}
-                </span>
+              <div className="thread-main">
+                <Link
+                  to={`/post/${post._id}`}
+                  className="thread-title-link"
+                >
+                  {post.title}
+                </Link>
+
+                <div className="thread-preview">
+                  {post.content.slice(0, 80)}...
+                </div>
               </div>
 
-            </div>
-
-            {/* RIGHT: Stats */}
-            <div className="thread-stats">
-
-              <div className="thread-replies">
-                {post.replyCount || 0} replies
+              <div className="thread-author">
+                {post.author?.username || "Unknown"}
               </div>
 
               <div className="thread-date">
-                {new Date(post.createdAt).toLocaleDateString()}
+                {new Date(post.createdAt).toLocaleDateString("en-GB")}
               </div>
 
             </div>
+          ))}
 
-          </div>
-        ))}
+        </div>
 
       </div>
 
     </div>
-  );
+  </div>
+);
 };
 
 export default Feed;

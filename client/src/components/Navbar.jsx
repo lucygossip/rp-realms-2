@@ -19,7 +19,7 @@ const AppNavbar = () => {
 
         {/* Brand */}
         <Navbar.Brand as={Link} to="/">
-          ForumBoard
+          Burdens of the Broken
         </Navbar.Brand>
 
         <Navbar.Toggle />
@@ -34,11 +34,6 @@ const AppNavbar = () => {
             </Nav.Link>
 
             {/* Only logged-in users */}
-            {user && (
-              <Nav.Link as={NavLink} to="/create-post">
-                New Thread
-              </Nav.Link>
-            )}
             {user && (
   <Nav.Link
     as={Link}

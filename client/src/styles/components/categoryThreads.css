@@ -126,10 +126,6 @@
   transition: 0.2s;
 }
 
-.thread-row:hover {
-  background: var(--bg-alt);
-}
-
 /* =========================
    Thread Content
 ========================= */
